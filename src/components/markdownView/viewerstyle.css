@@ -1,0 +1,22 @@
+.width
+{
+    width: 50%;
+}
+
+.marked_preview
+{
+    text-align: left;
+}
+
+.mdp_container
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.mdp_sourceEditor
+{
+    width: 50%;
+    height: 100%;
+}

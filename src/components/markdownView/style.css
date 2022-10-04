@@ -1,0 +1,97 @@
+
+
+h1,h2,h3,h4,h5,h6
+{
+    padding: 4px;
+    border-bottom: 1px lightgray solid;
+}
+
+h1.error,h2.error,h3.error,h4.error,h5.error,h6.error
+{
+    background-color: lightyellow;
+}
+
+
+table
+{
+    border-collapse: collapse;
+    border-color: gray;
+}
+
+table th
+{
+    padding: 6px 13px;
+    font-weight: 600;
+    border: 1px solid lightgray;
+}
+
+table td
+{
+    padding: 6px 13px;    
+	border: 1px solid lightgray;
+}
+
+blockquote
+{
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 40px;
+	margin-inline-end: 40px;
+
+    padding: 0 1em;
+	color: gray;
+	border-left: 0.25em solid lightblue;
+}
+
+div.note.info
+{
+    background-color: #e3f7df;
+    padding: 16px;
+}
+
+div.note.warn
+{
+    background-color: #fdf9e2;
+    padding: 16px;
+}
+
+div.note.alert
+{
+    background-color: #feebee;
+    padding: 16px;
+}
+
+.tooltip
+{
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.description
+{
+    display: none;
+    position: absolute;
+    padding: 10px;
+    font-size: 12px;
+    line-height: 1.6em;
+    color: #fff;
+    border-radius: 5px;
+    background-color: #000000bd;
+    width: auto;
+    white-space: nowrap;
+}
+
+.tooltip:hover .description{
+    display: inline-block;
+    top: 30px;
+    left: 0px;
+}
+
+hr
+{
+    background-color: gray;
+    border: none;
+    height: 1px;
+}
