@@ -1,11 +1,8 @@
-import { Container } from "@mui/system";
 import "./style.css";
 
-function MainContainer(props : any)
+export const MainContainer = (props : any) =>
 {
     return (
-        <Container className="content">{props.children}</Container>
+        <div className="content">{props.children}</div>
     );
 }
-
-export default MainContainer;

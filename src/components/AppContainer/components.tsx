@@ -1,21 +1,26 @@
 import React from 'react';
-import MainContainer from "../MainContainer/component";
 import { AppToolBar } from "../AppToolBar/component";
 import { IUseDirecotryHandleStore, useDirecotryHandleStore } from '../../hooks/useDirecotryHandleStore';
-import { Button } from '@mui/material';
-import { MarkdownView } from '../markdownView/component';
+import { MarkdownView } from '../MarkdownEditor/MarkdownViewer/component';
+import { MarkDownEditorContainer } from '../MarkdownEditor/Container/component';
+import { MainContainer } from '../MainContainer/component';
+import { IEditContext, useEditContext } from '../../hooks/useEditContext';
 
 export const AppContainer = () =>
 {
-    const chook_dirctoryHandle : IUseDirecotryHandleStore = useDirecotryHandleStore();
+    const context : IEditContext = useEditContext();
+    
+    // const chook_dirctoryHandle : IUseDirecotryHandleStore = useDirecotryHandleStore();
     // const chook_useTemplatesStore : IUseTemplatesStore = useTemplatesStore();
     // const chook_useTemplatesState : IUseTemplatesState = useTemplatesState();
 
     return (
         <>
-        <AppToolBar useDirecotryHandleStore={chook_dirctoryHandle}></AppToolBar>
+        {/* <MonacoEditor></MonacoEditor> */}
+        {/* <AppToolBar useDirecotryHandleStore={chook_dirctoryHandle}></AppToolBar> */}
+        <AppToolBar context={context}></AppToolBar>
         <MainContainer>
-            <MarkdownView></MarkdownView>
+            <MarkDownEditorContainer context={context}></MarkDownEditorContainer>
         </MainContainer>
         </>
     );

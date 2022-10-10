@@ -1,0 +1,33 @@
+.width
+{
+    /* width: 50%; */
+}
+
+.marked_preview
+{
+    text-align: left;
+}
+
+.mdp_container
+{
+    width: 100%;
+    height: 100%;
+    /* display: flex; */
+}
+
+.mdp_sourceEditor
+{
+    /* width: 50%; */
+    /* height: 100%; */
+}
+
+.gutter_style 
+{
+    width: 3px;
+    background-color: gray;
+}
+
+.gutter_style:hover
+{
+    cursor: col-resize;
+}

@@ -18,3 +18,20 @@ export const getFileEntriesFromDirectoryHandle = async (handle) =>
     const entries = await handle.entries();
     return await handle.entries();
 }
+
+export const showOpenFilePicker = async (option) =>
+{
+    return await window.showOpenFilePicker(option);
+}
+
+export const showSaveFilePicker = async () =>
+{
+    const opts = {
+        types: [{
+        description: 'htmlドキュメント',
+        accept: {'text/html': ['.html']},
+        }],
+    };
+
+    return await window.showSaveFilePicker(opts);
+}
