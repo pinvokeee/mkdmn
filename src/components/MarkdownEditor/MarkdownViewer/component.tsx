@@ -105,23 +105,83 @@ blockquote
 	border-left: 0.25em solid lightblue;
 }
 
+div.note
+{
+    position: relative;
+    padding: 4px;
+    padding-left: 40px;
+}
+
+div.note:before
+{
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    top: calc(4px + 16px);
+    left: 16px;
+    border-radius: 60%;
+    position: absolute;
+}
+
+div.note:after
+{
+    display: inline-block;
+    top: calc(4px + 16px);
+    color: white;
+    position: absolute;
+    font-weight: bold;
+    font-size: 9pt;
+}
+
 div.note.info
 {
     background-color: #e3f7df;
-    padding: 16px;
+}
+
+div.note.info:before
+{
+    background-color: #55c500;
+}
+
+div.note.info:after
+{
+    content: "✓";
+    left: 18px;
 }
 
 div.note.warn
 {
     background-color: #fdf9e2;
-    padding: 16px;
+}
+
+div.note.warn:before
+{
+    background-color: #f7a535;
+}
+
+div.note.warn:after
+{
+    content: "!";
+    left: 22px;
 }
 
 div.note.alert
 {
     background-color: #feebee;
-    padding: 16px;
 }
+
+div.note.alert:before
+{
+    background-color: darkred;
+}
+
+div.note.alert:after
+{
+    content: "×";
+    left: 19px;
+}
+
 
 .tooltip
 {
@@ -156,4 +216,12 @@ hr
     border: none;
     height: 1px;
 }
-`
+
+code
+{
+    font-family: inherit;
+    color: darkred;
+
+}
+
+`;
