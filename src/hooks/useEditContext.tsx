@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { showSaveFilePicker } from "../js/fileAccessJSHelper";
+import { showSaveFilePicker } from "../js/FileAccessTS/fileAccess";
 
 export interface IEditContext
 {
@@ -32,13 +32,15 @@ export const useEditContext = () : IEditContext =>
 
     const onSelectFile = async (handle : any) =>
     {
-        const file = await handle.getFile();
-        const text = await file.text();
+        // const handle
 
-        setText(text);
-        setFileHandle(handle);
+        // const file = await handle.getFile();
+        // const text = await file.text();
 
-        console.log(text);
+        // setText(text);
+        // setFileHandle(handle);
+
+        // console.log(text);
     }
 
     const saveFile = async () =>
@@ -53,9 +55,10 @@ export const useEditContext = () : IEditContext =>
     {
         // console.log(html);
         const handle = await showSaveFilePicker();
-        const writable = await handle.createWritable();
-        await writable.write(html);
-        await writable.close();
+        // // handle.getFile().
+        // const writable = await handle.createWritable();
+        // await writable.write(html);
+        // await writable.close();
     }
 
     return {

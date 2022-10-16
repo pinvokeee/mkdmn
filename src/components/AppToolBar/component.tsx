@@ -1,7 +1,7 @@
 import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import { IUseDirecotryHandleStore } from "../../hooks/useDirecotryHandleStore";
 import { IEditContext } from "../../hooks/useEditContext";
-import { showOpenFilePicker } from "../../js/fileAccessJSHelper";
+import { FileSystemDirectoryHandleEx, showDirectoryPicker } from "../../js/FileAccessTS/fileAccess";
 
 export interface IAppToolBarProps
 {
@@ -43,8 +43,12 @@ export const AppToolBar = (props : IAppToolBarProps) =>
         ],
       };
 
-      const [f] = await showOpenFilePicker(opt);  
-      props.context.onSelectFile(f);
+      const f : FileSystemDirectoryHandleEx = await showDirectoryPicker();
+
+      for await (const [key, value] of f.entries())
+      {
+        console.log(key, value);
+      }
     }
 
     const saveSourceFile = async () =>

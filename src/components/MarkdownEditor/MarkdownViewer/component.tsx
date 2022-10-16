@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { cardContentClasses, TextField } from "@mui/material";
 import { render } from "@testing-library/react";
 import { marked } from "marked";
 import { ChangeEvent, createElement, FormEventHandler, useCallback, useEffect, useState } from "react"
@@ -6,7 +6,8 @@ import "./viewerstyle.css"
 import Split from "react-split";
 import styled from "@emotion/styled";
 import { ReactMonacoEditor } from "../../ReactMonacoEditor/component";
-import { CustomMarkedJs } from "../../../markdown/CustomMarkedJs";
+import { CustomMarkedownParser } from "../../../markdown/CustomMarkedIt";
+// import { CustomMarkedJs } from "../../../markdown/CustomMarkedJs";
 
 export interface IMarkdownViewProps
 {
@@ -16,7 +17,7 @@ export interface IMarkdownViewProps
 
 export const MarkdownView = (props : IMarkdownViewProps) =>
 {
-    const customMarked = new CustomMarkedJs();
+    const customMarked = new CustomMarkedownParser();
     const [frameElement, setFrameElement] = useState<HTMLIFrameElement | null>(null);
 
     const frameElementRef : any = useCallback((element : HTMLIFrameElement | null) =>
@@ -29,18 +30,37 @@ export const MarkdownView = (props : IMarkdownViewProps) =>
     useEffect(() =>
     {        
         if (frameElement != null && frameElement.contentDocument != null)
-        {
-            const html = customMarked.parse(props.source);
-
-            frameElement.contentDocument.head.innerHTML = `<style>${defaultStyle}</style>`;
-            frameElement.contentDocument.body.innerHTML = html;
-
-            const doc = `<html>${frameElement.contentDocument.documentElement.innerHTML}</html>`
-
+        {       
+            const doc = previewHtml(props.source, frameElement);
             props.onUpdateSource(doc);
         }
     }, 
     [props.source])
+
+    const previewHtml = async (source : string, frame : HTMLIFrameElement) =>
+    {
+       // const html = customMarked.parse(props.source);
+ 
+        if (frame == null || frame.contentDocument == null) return ""; 
+
+        const html = customMarked.parse(props.source);
+        frame.contentDocument.head.innerHTML = `<style>${defaultStyle}</style>`;
+        frame.contentDocument.body.innerHTML = html;
+
+        const doc = `<html>${frame.contentDocument.documentElement.innerHTML}</html>`
+        return doc;
+
+        // customMarked.parse(props.source).then(html => 
+        // {
+        //     if (frame == null || frame.contentDocument == null) return ""; 
+
+        //     frame.contentDocument.head.innerHTML = `<style>${defaultStyle}</style>`;
+        //     frame.contentDocument.body.innerHTML = html;
+    
+        //     const doc = `<html>${frame.contentDocument.documentElement.innerHTML}</html>`
+        //     return doc;
+        // }); 
+    }
 
     return (
         <MarkdownPreview>

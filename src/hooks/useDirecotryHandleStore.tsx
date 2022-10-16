@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { showSelectDirectoryPicker } from "../js/fileAccessJSHelper";
 
 /**
  * ディレクトリ取得・管理するinterface
@@ -32,7 +31,7 @@ export const useDirecotryHandleStore = () : IUseDirecotryHandleStore =>
 
     const showDirectoryPicker = async () : Promise<FileSystemDirectoryHandle> =>
     {
-        const handle  = await showSelectDirectoryPicker();
+        const handle  = await showDirectoryPicker();
         setDirectoryHandle(handle);
         return handle;
     }
